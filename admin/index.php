@@ -2,9 +2,15 @@
 
 session_start();
 require "connect.php";
-if(!isset($_SESSION["login"])){
+if(isset($_SESSION["login"])){
+
+  if($_SESSION["login"]["priv"] != 1){
+    header("location:404.html");
+  }
+}else{
   header("location:login.php");
 }
+
 ?>
 
 <!DOCTYPE html>
